@@ -1,0 +1,21 @@
+name: Tests
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+
+jobs:
+  access_check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Output event
+      run: echo ${{ github.event_name }}
+    - name: Check user permissions
+      if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.author_association != 'MEMBER' }}
+      run: |
+        echo "Action was not triggered by an organization member. Exiting now."
+        exit 1
+
+
