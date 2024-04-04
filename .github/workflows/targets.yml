@@ -12,6 +12,10 @@ jobs:
     steps:
     - name: Output event
       run: echo ${{ github.event_name }}
+    - name: Output GitHub
+      run: echo ${{ github }}
+    - name: Output GitHub context
+      run: echo ${{ github.context }}
     - name: Check user permissions
       if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.author_association != 'MEMBER' }}
       run: |
