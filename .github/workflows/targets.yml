@@ -22,4 +22,33 @@ jobs:
         echo "Action was not triggered by an organization member. Exiting now."
         exit 1
 
-
+  slack-notify:
+    name: "Post release notes to Slack"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Send release notes to Slack"
+        uses: "slackapi/slack-github-action@v1.25.0"
+        with:
+          channel-id: C04CRUE6MU3
+          payload: |
+            {
+              "text": "Release notes",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "# Release notes - 12"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ github.event.release.body }}"
+                  }
+                },
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
