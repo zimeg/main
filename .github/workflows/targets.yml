@@ -47,7 +47,7 @@ jobs:
                     "type": "mrkdwn",
                     "text": "${{ github.event.release.body }}"
                   }
-                },
+                }
               ]
             }
         env:
