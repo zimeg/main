@@ -30,7 +30,7 @@ jobs:
             - "@slack/cli-hooks"
 
       - name: Print a template of two
-        run: echo ${{ env.DEPENDENCIES }}
+        run: echo "${{ env.DEPENDENCIES }}"
         env:
           DEPENDENCIES: |
             - "@slack/bolt"
