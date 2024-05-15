@@ -39,10 +39,10 @@ jobs:
       - name: Attempt a contains
         if: |
           (
-            true == true
+            true == true ||
             true == false
           ) && (
-            0 < 4
+            0 < 4 ||
             8 < 4
           )
         run: echo "nice"
