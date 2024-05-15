@@ -22,8 +22,15 @@ jobs:
           DEPENDENCIES: |
             - "@slack/bolt"
 
-      - name: Print a of two
+      - name: Print a string of two
         run: echo $DEPENDENCIES
+        env:
+          DEPENDENCIES: |
+            - "@slack/bolt"
+            - "@slack/cli-hooks"
+
+      - name: Print a template of two
+        run: echo ${{ env.DEPENDENCIES }}
         env:
           DEPENDENCIES: |
             - "@slack/bolt"
