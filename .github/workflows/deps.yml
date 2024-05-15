@@ -31,7 +31,7 @@ jobs:
 
       - name: Attempt a contains
         if: |
-          contains(${{ env.DEPENDENCIES }}, "@slack/cli-hooks") &&
+          contains(${{ env.DEPENDENCIES }}, "@slack/cli-asdf") &&
           (1 < 3)
         run: echo "nice"
         env:
