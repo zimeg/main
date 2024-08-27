@@ -5,22 +5,25 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   access_check:
     runs-on: ubuntu-latest
     steps:
-    - name: Output event
-      run: echo ${{ github.event_name }}
-    - name: Output GitHub
-      run: echo ${{ toJson(github) }}
-    - name: Output GitHub context
-      run: echo ${{ toJson(github.context) }}
-    - name: Check user permissions
-      if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.author_association != 'MEMBER' }}
-      run: |
-        echo "Action was not triggered by an organization member. Exiting now."
-        exit 1
+      - name: Output event
+        run: echo ${{ github.event_name }}
+      - name: Output GitHub
+        run: echo ${{ toJson(github) }}
+      - name: Output GitHub context
+        run: echo ${{ toJson(github.context) }}
+      - name: Output environment
+        run: echo ${{ toJson(process.env) }}
+      - name: Check user permissions
+        if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.author_association != 'MEMBER' }}
+        run: |
+          echo "Action was not triggered by an organization member. Exiting now."
+          exit 1
 
   slack-notify:
     name: "Post release notes to Slack"
