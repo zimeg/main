@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 jobs:
-  access_check:
+  development:
     runs-on: ubuntu-latest
     steps:
       - name: Post a token message into channel
