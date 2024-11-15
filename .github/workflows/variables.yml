@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the variable
-        run: echo ${{ vars.SLACK_NOTIFICATION }}
+        run: echo "${{ vars.SLACK_NOTIFICATION }}"
 
       - name: Replace the template
         uses: slackapi/slack-github-action@v2.0.0
