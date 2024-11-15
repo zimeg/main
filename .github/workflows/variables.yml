@@ -15,6 +15,7 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload-templated: true
           payload: |
-            text: "Greetings!"
+            channel: ""
+            text: ""
         env:
           NUMBER: 12
