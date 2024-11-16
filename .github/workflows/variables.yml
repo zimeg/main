@@ -46,3 +46,31 @@ jobs:
         env:
           COMMIT_HASH: ${{ github.sha || '' }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      - name: Sets a commit message
+        run: |
+          COMMIT_MSG="hello world"
+          echo "COMMIT_MSG=$COMMIT_MSG" >> $GITHUB_ENV
+      - name: Echos environment variables
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: example
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: "*:fire: ${{ github.actor }} broke the ${{ github.workflow }} job :fire:*\n\n${{ env.COMMIT_MSG }}\n${{github.sha}}"
+                accessory:
+                  type: image
+                  image_url: https://tenor.com/view/mochi-mochi-peach-cat-cat-kitty-animated-cry-gif-17774448
+                  alt_text: cat
+              - type: actions
+                elements:
+                  - type: button
+                    text:
+                      - type: plain_text
+                        text: "View Job"
+                        url: "https://github.com//${{ github.repository}}/actions/runs/${{ github.run_id }}"
