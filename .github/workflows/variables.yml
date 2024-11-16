@@ -7,15 +7,12 @@ jobs:
     name: Replace placeholders
     runs-on: ubuntu-latest
     steps:
-      - name: Replace the template
+      - name: Find the actor
         uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          method: chat.postMessage
+          method: users.lookupByEmail
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload-templated: true
           payload: |
-            channel: ""
-            text: ""
-        env:
-          NUMBER: 12
+            email: "${{ github.actor }}"
