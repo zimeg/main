@@ -35,5 +35,5 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: ${{ github.SLACK_USER_ID }}
+            channel: ${{ env.SLACK_USER_ID }}
             text: "hello again."
