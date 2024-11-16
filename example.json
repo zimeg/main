@@ -1,0 +1,4 @@
+{
+  "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+  "text": "Deployment started :eyes: at ${{ env.UNKNOWN }} for ${{ env.NUMBER }} -"
+}

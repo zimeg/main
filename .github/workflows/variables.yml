@@ -42,10 +42,12 @@ jobs:
         id: deployment_message_1
         with:
           method: chat.postMessage
+          payload-file-path: ./example.json
+          payload-templated: true
           token: ${{ secrets.SLACK_BOT_TOKEN }}
-          payload: |
-            channel: ${{ secrets.SLACK_CHANNEL_ID }}
-            text: "Deployment started :eyes:"
+        env:
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          NUMBER: 12
       - name: Conclude the deployment
         if: ${{ steps.deployment_message_1.outputs.ok }}
         uses: slackapi/slack-github-action@v2.0.0
