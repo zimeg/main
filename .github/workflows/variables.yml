@@ -26,7 +26,7 @@ jobs:
       - name: Parse JSON and Set SLACK_USER_ID
         if: ${{ steps.user.outputs.ok }}
         run: |
-          SLACK_USER_ID=$(echo "${{ steps.user.outputs.response }}" | jq -r '.user.id')
+          SLACK_USER_ID=$(echo '${{ steps.user.outputs.response }}' | jq -r '.user.id')
           echo "SLACK_USER_ID=$SLACK_USER_ID" >> $GITHUB_ENV
       - name: Send a message to the user
         if: ${{ steps.user.outputs.ok }}
