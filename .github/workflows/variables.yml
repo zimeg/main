@@ -7,12 +7,16 @@ jobs:
     name: Replace placeholders
     runs-on: ubuntu-latest
     steps:
-      - name: Find the actor
+      - name: Get the author
+        run: |
+          AUTHOR_EMAIL=$(git log -1 --pretty=format:'%ae')
+          echo "Author email is: $AUTHOR_EMAIL"
+          echo "AUTHOR_EMAIL=$AUTHOR_EMAIL" >> $GITHUB_ENV
+      - name: Lookup by email
         uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
           method: users.lookupByEmail
           token: ${{ secrets.SLACK_BOT_TOKEN }}
-          payload-templated: true
           payload: |
             email: "${{ github.payload.pull_request.user.email }}"
