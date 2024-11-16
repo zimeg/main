@@ -28,3 +28,11 @@ jobs:
         run: |
           SLACK_USER_ID=$(echo "${{ steps.user.outputs.response }}" | jq -r '.user.id')
           echo "SLACK_USER_ID=$SLACK_USER_ID" >> $GITHUB_ENV
+      - name: Send a message to the user
+        if: ${{ steps.user.outputs.ok }}
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          payload: |
+            channel: ${{ github.SLACK_USER_ID }}
+            text: "hello again."
