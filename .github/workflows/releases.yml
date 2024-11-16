@@ -1,0 +1,24 @@
+name: Releases
+on: push
+jobs:
+  releaser:
+    name: Mimic a release
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Post release notes to Slack"
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "Release notes have been shared"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: "*Release notes*"
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: "todo: ${{ steps.extract_release_note.outputs.release_note }}"
