@@ -21,4 +21,4 @@ jobs:
           method: users.lookupByEmail
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            email: "${{ github.payload.pull_request.user.email }}"
+            email: "${{ env.AUTHOR_EMAIL }}"
