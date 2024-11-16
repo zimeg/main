@@ -15,4 +15,4 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload-templated: true
           payload: |
-            email: "${{ github.actor }}"
+            email: "${{ github.payload.user.email }}"
