@@ -35,4 +35,24 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: ${{ env.SLACK_USER_ID }}
-            text: "hello again. :octocatted:"
+            text: "greetings :octocatted:"
+
+      - name: Initiate a deployment
+        uses: slackapi/slack-github-action@v2.0.0
+        id: deployment_message_1
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "Deployment started :eyes:"
+      - name: Conclude the deployment
+        if: ${{ steps.deployment_message_1.outputs.ok }}
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: "${{ steps.deployment_message_1.outputs.channel_id }}"
+            thread_ts: "${{ steps.deployment_message_1.outputs.ts }}"
+            text: "Deployment finished! :rocket:"
