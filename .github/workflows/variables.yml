@@ -48,6 +48,7 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
         env:
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          UNKNOWN: ${{ github.randomness || '' }}
           NUMBER: 12
       - name: Conclude the deployment
         if: ${{ steps.deployment_message_1.outputs.ok }}
