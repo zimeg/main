@@ -58,7 +58,7 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: ${{ secrets.SLACK_CHANNEL_ID }}
-            text: example
+            text: A job was started
             blocks:
               - type: section
                 text:
@@ -66,7 +66,7 @@ jobs:
                   text: "*:fire: ${{ github.actor }} broke the ${{ github.workflow }} job :fire:*\n\n${{ env.COMMIT_MSG }}\n${{github.sha}}"
                 accessory:
                   type: image
-                  image_url: https://tenor.com/view/mochi-mochi-peach-cat-cat-kitty-animated-cry-gif-17774448
+                  image_url: https://media1.tenor.com/m/G8StgJVopSEAAAAd/mochi-mochi-peach-cat-cat.gif
                   alt_text: cat
               - type: actions
                 elements:
