@@ -36,27 +36,13 @@ jobs:
           payload: |
             channel: ${{ env.SLACK_USER_ID }}
             text: "greetings :octocatted:"
-
-      - name: Initiate a deployment
+      - name: Share an update
         uses: slackapi/slack-github-action@v2.0.0
-        id: deployment_message_1
         with:
-          errors: true
           method: chat.postMessage
           payload-file-path: ./example.json
           payload-templated: true
           token: ${{ secrets.SLACK_BOT_TOKEN }}
         env:
+          COMMIT_HASH: ${{ github.sha || '' }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-          UNKNOWN: ${{ github.sha || '' }}
-          NUMBER: 12
-      - name: Conclude the deployment
-        if: ${{ steps.deployment_message_1.outputs.ok }}
-        uses: slackapi/slack-github-action@v2.0.0
-        with:
-          method: chat.postMessage
-          token: ${{ secrets.SLACK_BOT_TOKEN }}
-          payload: |
-            channel: "${{ steps.deployment_message_1.outputs.channel_id }}"
-            thread_ts: "${{ steps.deployment_message_1.outputs.ts }}"
-            text: "Deployment finished! :rocket:"

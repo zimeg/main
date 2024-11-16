@@ -1,4 +1,4 @@
 {
   "channel": "${{ env.SLACK_CHANNEL_ID }}",
-  "text": "Deployment started :eyes: at ${{ env.UNKNOWN }} for ${{ env.NUMBER }} -"
+  "text": "A commit landed: ${{ env.COMMIT_HASH }}"
 }
