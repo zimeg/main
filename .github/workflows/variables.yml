@@ -15,6 +15,7 @@ jobs:
           echo "Author email is: $AUTHOR_EMAIL"
           echo "AUTHOR_EMAIL=$AUTHOR_EMAIL" >> $GITHUB_ENV
       - name: Lookup by email
+        id: user
         uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
@@ -22,3 +23,8 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             email: "${{ env.AUTHOR_EMAIL }}"
+      - name: Parse JSON and Set SLACK_USER_ID
+        if: ${{ steps.user.outputs.ok }}
+        run: |
+          SLACK_USER_ID=$(echo "${{ steps.user.outputs.response }}" | jq -r '.user.id')
+          echo "SLACK_USER_ID=$SLACK_USER_ID" >> $GITHUB_ENV
