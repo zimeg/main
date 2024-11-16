@@ -74,4 +74,4 @@ jobs:
                     text:
                       - type: plain_text
                         text: "View Job"
-                        url: "https://github.com//${{ github.repository}}/actions/runs/${{ github.run_id }}"
+                    url: "https://github.com//${{ github.repository}}/actions/runs/${{ github.run_id }}"
