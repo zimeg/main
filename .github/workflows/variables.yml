@@ -41,6 +41,7 @@ jobs:
         uses: slackapi/slack-github-action@v2.0.0
         id: deployment_message_1
         with:
+          errors: true
           method: chat.postMessage
           payload-file-path: ./example.json
           payload-templated: true
