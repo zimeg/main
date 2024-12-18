@@ -7,8 +7,9 @@ on:
       - opened
 jobs:
   run:
-    name: Send a notification of recent changes
+    name: Respond to reports of a new problem
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == "bug" }}
     steps:
       - name: Create a new Slack channel for communications
         id: conversation
