@@ -50,9 +50,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "```${{ env.COMMIT_MESSAGE }}```"
+                  "text": ${{ toJSON(github.event.head_commit.message) }}
                 }
               }
             ]
-        env:
-          COMMIT_MESSAGE: ${{ toJSON(github.event.head_commit.message) }}
