@@ -81,7 +81,7 @@ jobs:
           payload: |
             text: "Greetings!"
         env:
-          SLACK_INCOMING_WEBHOOKHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
 
       - name: Forward a saved message
         uses: slackapi/slack-github-action@v2.0.0
@@ -91,7 +91,7 @@ jobs:
           webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
           webhook-type: incoming-webhook
         env:
-          SLACK_INCOMING_WEBHOOKHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
           SLACK_CHANNEL_ID: C04CRUE6MU3
 
       - name: Write the review
@@ -119,4 +119,4 @@ jobs:
                   - type: "mrkdwn"
                     text: "*Average Rating*: 1.0"
         env:
-          SLACK_INCOMING_WEBHOOKHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
