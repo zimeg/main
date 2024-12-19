@@ -19,11 +19,11 @@ jobs:
       - name: Start the Slack workflow
         uses: slackapi/slack-github-action@v2.0.0
         with:
-          payload-file-path: "./.github/workflows/builds.data.json"
+          payload-delimiter: "_"
           webhook: ${{ env.SLACK_WEBHOOK_TRIGGER_URL }}
           webhook-type: webhook-trigger
         env:
-          SLACK_WEBHOOK_TRIGGER_URL: https://hooks.slack.com/triggers/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
+          SLACK_WEBHOOK_TRIGGER_URL: https://hooks.slack.com/triggers/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
 
       #
       # TECHNIQUE 2
