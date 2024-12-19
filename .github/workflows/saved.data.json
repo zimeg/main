@@ -6,7 +6,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "Slack notifications sound following ${{ github.sha }}"
+        "text": "Slack notifications sound following the most recent commit `${{ github.sha }}`"
       },
       "accessory": {
         "type": "button",
