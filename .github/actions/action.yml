@@ -5,8 +5,15 @@ inputs:
   slack_bot_token:
     description: "Slack bot token"
     required: true
-  payload:
-    description: "The data to send"
+  channel_id:
+    description: "Slack channel id"
+    required: false
+    default: "channel"
+  message:
+    description: "Message to send to Slack"
+    required: true
+  blocks:
+    description: "Optional Slack blocks for advanced message formatting"
     required: false
 runs:
   using: "composite"
@@ -17,4 +24,8 @@ runs:
         errors: true
         method: chat.postMessage
         token: ${{ inputs.slack_bot_token }}
-        payload: ${{ inputs.payload }}
+        payload: |
+          channel: "${{ inputs.channel_id }}"
+          text: "${{ inputs.message }}"
+          blocks:
+          ${{ inputs.blocks }}
