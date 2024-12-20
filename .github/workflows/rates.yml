@@ -11,168 +11,160 @@ jobs:
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
+            title: "LGTM!"
       - uses: slackapi/slack-github-action@v2.0.0
         with:
           errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            message: "hello"
-      - uses: slackapi/slack-github-action@v2.0.0
-        with:
-          errors: true
-          retries: rapid
-          webhook: https://hooks.slack.com/triggers/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
-          webhook-type: webhook-trigger
-          payload: |
-            message: "hello"
+            title: "LGTM!"
