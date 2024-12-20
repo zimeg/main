@@ -50,4 +50,4 @@ jobs:
               ]
             }
         env:
-          BLOCK: steps.vars.outputs.DIFF_CONTENT
+          BLOCK: ${{ steps.vars.outputs.DIFF_CONTENT }}
