@@ -33,6 +33,7 @@ jobs:
       - name: Notification
         uses: slackapi/slack-github-action@v2
         with:
+          errors: true
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           method: chat.postMessage
           payload: |
