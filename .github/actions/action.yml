@@ -21,6 +21,7 @@ runs:
     - name: Send Slack notification
       uses: slackapi/slack-github-action@v2.0
       with:
+        errors: true
         method: chat.postMessage
         token: ${{ inputs.slack_bot_token }}
         payload: |
