@@ -44,7 +44,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": '```${{ env.BLOCK }}```'
+                    "text": "${{ env.BLOCK }}"
                   }
                 }
               ]
