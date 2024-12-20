@@ -35,10 +35,16 @@ jobs:
         with:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: "C04CRUE6MU3"
-            message: "message"
-            blocks:
-              - type: "section"
-                text:
-                  type: "mrkdwn"
-                  text: '```${{ steps.vars.outputs.DIFF_CONTENT }}```'
+            {
+              "channel": "C04CRUE6MU3",
+              "text": "message",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": '```${{ steps.vars.outputs.DIFF_CONTENT }}```'
+                  }
+                }
+              ]
+            }
