@@ -39,7 +39,7 @@ jobs:
           payload: |
             channel: "C04CRUE6MU3"
             text: "message"
-            blocks: |
+            blocks:
               - type: "rich_text"
                 elements:
                   - type: "rich_text_preformatted"
