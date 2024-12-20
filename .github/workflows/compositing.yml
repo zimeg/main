@@ -34,15 +34,11 @@ jobs:
         uses: ./.github/actions
         with:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-          channel_id: "C04CRUE6MU3"
-          message: "message"
-          blocks: |
-            [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "```${{ steps.vars.outputs.DIFF_CONTENT }}```"
-                }
-              }
-            ]
+          payload: |
+            channel: "C04CRUE6MU3"
+            message: "message"
+            blocks:
+              - type: "section"
+                text:
+                  type: "mrkdwn"
+                  text: '```${{ steps.vars.outputs.DIFF_CONTENT }}```'
