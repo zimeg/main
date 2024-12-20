@@ -24,7 +24,6 @@ runs:
         method: chat.postMessage
         token: ${{ inputs.slack_bot_token }}
         payload: |
-          channel: "${{ inputs.channel_id }}"
-          text: "${{ inputs.message }}"
-          blocks:
-          ${{ inputs.blocks }}
+          "channel": "${{ inputs.channel_id }}",
+          "text": "${{ inputs.message }}",
+          "blocks": ${{ toJSON(inputs.blocks) }}
