@@ -31,9 +31,10 @@ jobs:
           echo "${{ steps.vars.outputs.DIFF_CONTENT }}"
 
       - name: Notification
-        uses: ./.github/actions
+        uses: slackapi/slack-github-action@v2.0.0
         with:
-          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
           payload: |
             {
               "channel": "C04CRUE6MU3",
