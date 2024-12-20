@@ -41,11 +41,18 @@ jobs:
               "text": "message",
               "blocks": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}
-                  }
+                  "type": "rich_text",
+                  "elements": [
+                      {
+                          "type": "rich_text_preformatted",
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "text": ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}
+                              }
+                          ]
+                      }
+                  ]
                 }
               ]
             }
