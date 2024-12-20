@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Post release announcements
+on:
+  release:
+    types:
+      - published
+jobs:
+  run:
+    name: Share recent changes with a channel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Draft with these release notes details
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            "draft_channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+            "release_notes": ${{ toJSON(github.event.release.body) }},
+            "release_repository": "${{ github.repository }}",
+            "release_version": "${{ github.event.release.tag_name }}",

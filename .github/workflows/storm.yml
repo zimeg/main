@@ -4,12 +4,12 @@ name: Invite a usergroup to channel
 on:
   issues:
     types:
-      - opened
+      - labeled
 jobs:
   run:
     name: Respond to reports of a new problem
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == "bug" }}
+    if: ${{ github.event.label.name == 'bug' }}
     steps:
       - name: Create a new Slack channel for communications
         id: conversation
