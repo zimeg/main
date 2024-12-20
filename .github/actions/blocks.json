@@ -1,0 +1,5 @@
+{
+  "channel": "${{ env.CHANNEL }}",
+  "text": "${{ env.TEXT }}",
+  "blocks": ${{ env.BLOCKS }}
+}
