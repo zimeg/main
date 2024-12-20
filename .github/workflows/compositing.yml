@@ -31,7 +31,7 @@ jobs:
           echo "${{ steps.vars.outputs.DIFF_CONTENT }}"
 
       - name: Notification
-        uses: ./.github/actions/action.yml
+        uses: ./.github/actions
         with:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
           channel_id: "C04CRUE6MU3"
