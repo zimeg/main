@@ -34,4 +34,4 @@ runs:
       env:
         CHANNEL: ${{ inputs.channel_id }}
         TEXT: ${{ inputs.message }}
-        BLOCKS: ${{ inputs.blocks }}
+        BLOCKS: ${{ toJSON(inputs.blocks) }}
