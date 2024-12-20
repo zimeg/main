@@ -3,8 +3,6 @@ name: send-slack
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
 
 jobs:
   send-slack:
