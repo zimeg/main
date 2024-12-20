@@ -33,10 +33,6 @@ jobs:
           payload: |
             canvas_id: "${{ env.CANVAS_ID }}"
 
-      #
-      ##
-      #
-
       - uses: slackapi/slack-github-action@v2.0.0
         id: canvases1
         with:
@@ -61,10 +57,6 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             canvas_id: "${{ env.CANVAS_ID }}"
-
-      #
-      ##
-      #
 
       - uses: slackapi/slack-github-action@v2.0.0
         id: canvases2
@@ -91,10 +83,6 @@ jobs:
           payload: |
             canvas_id: "${{ env.CANVAS_ID }}"
 
-      #
-      ##
-      #
-
       - uses: slackapi/slack-github-action@v2.0.0
         id: canvases3
         with:
@@ -120,10 +108,6 @@ jobs:
           payload: |
             canvas_id: "${{ env.CANVAS_ID }}"
 
-      #
-      ##
-      #
-
       - uses: slackapi/slack-github-action@v2.0.0
         id: canvases4
         with:
@@ -138,6 +122,881 @@ jobs:
         if: ${{ steps.canvases4.outputs.ok }}
         run: |
           CANVAS_ID=$(echo '${{ steps.canvases4.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases5
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases5.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases5.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases6
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases6.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases6.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases7
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases7.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases7.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases8
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases8.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases8.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases9
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases9.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases9.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases10
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases10.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases10.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases11
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases11.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases11.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases12
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases12.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases12.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases13
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases13.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases13.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases14
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases14.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases14.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases15
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases15.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases15.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases16
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases16.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases16.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases17
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases17.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases17.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases18
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases18.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases18.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases19
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases19.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases19.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases20
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases20.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases20.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases21
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases21.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases21.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases22
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases22.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases22.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases23
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases23.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases23.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases24
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases24.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases24.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases25
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases25.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases25.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases26
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases26.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases26.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases27
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases27.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases27.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases28
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases28.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases28.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases29
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases29.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases29.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases30
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases30.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases30.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases31
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases31.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases31.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases32
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases32.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases32.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases33
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases33.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases33.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases34
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases34.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases34.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases35
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases35.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases35.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases36
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases36.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases36.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases37
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases37.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases37.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases38
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases38.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases38.outputs.response }}' | jq -r '.canvas_id')
+          echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: canvases.delete
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            canvas_id: "${{ env.CANVAS_ID }}"
+
+      - uses: slackapi/slack-github-action@v2.0.0
+        id: canvases39
+        with:
+          errors: true
+          method: canvases.create
+          retries: 5
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            title: "LGTM!"
+
+      - name: Search email detail
+        if: ${{ steps.canvases39.outputs.ok }}
+        run: |
+          CANVAS_ID=$(echo '${{ steps.canvases39.outputs.response }}' | jq -r '.canvas_id')
           echo "CANVAS_ID=$CANVAS_ID" >> $GITHUB_ENV
 
       - uses: slackapi/slack-github-action@v2.0.0
