@@ -44,8 +44,10 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": '```${{ steps.vars.outputs.DIFF_CONTENT }}```'
+                    "text": '```${{ env.BLOCK }}```'
                   }
                 }
               ]
             }
+        env:
+          BLOCK: steps.vars.outputs.DIFF_CONTENT
