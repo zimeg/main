@@ -11,11 +11,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout the action
-      uses: actions/checkout@v4
-      with:
-        persist-credentials: false
-
     - name: Send Slack notification
       uses: slackapi/slack-github-action@v2.0
       with:
