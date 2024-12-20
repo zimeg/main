@@ -22,7 +22,7 @@ jobs:
         run: |
           {
             echo 'DIFF_CONTENT<<EOF'
-            jq '.' diff.json
+            jq -r '.' diff.json
             echo 'EOF'
           } >> $GITHUB_OUTPUT
 
