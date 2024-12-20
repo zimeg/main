@@ -40,4 +40,4 @@ jobs:
             - type: "section"
               text:
                 type: "mrkdwn"
-                text: '```${{ steps.vars.outputs.DIFF_CONTENT }}```'
+                text: "```${{ steps.vars.outputs.DIFF_CONTENT }}```"
