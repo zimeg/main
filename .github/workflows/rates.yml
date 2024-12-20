@@ -1,0 +1,157 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Spam the API
+on:
+  push:
+jobs:
+  run:
+    name: Make requests with a webhook trigger
+    runs-on: ubuntu-latest
+    steps:
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
+      - uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          webhook: https://hooks.slack.com/triggers/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
+          webhook-type: webhook-trigger
+          payload: |
+            message: "hello"
