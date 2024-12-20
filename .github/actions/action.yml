@@ -27,4 +27,4 @@ runs:
         payload: |
           "channel": "${{ inputs.channel_id }}",
           "text": "${{ inputs.message }}",
-          "blocks": ${{ toJSON(inputs.blocks) }}
+          "blocks": ${{ inputs.blocks }}
