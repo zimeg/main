@@ -28,4 +28,4 @@ runs:
           channel: "${{ inputs.channel_id }}"
           text: "${{ inputs.message }}"
           blocks:
-          ${{ inputs.blocks }}
+            ${{ inputs.blocks }}
