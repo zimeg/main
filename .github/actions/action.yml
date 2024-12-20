@@ -27,5 +27,6 @@ runs:
         payload: |
           channel: "${{ inputs.channel_id }}"
           text: "${{ inputs.message }}"
-          blocks:
-            ${{ inputs.blocks }}
+          blocks: ${{ env.BLOCKS }}
+      env:
+        BLOCKS: ${{ inputs.blocks }}
