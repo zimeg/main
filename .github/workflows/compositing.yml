@@ -37,7 +37,12 @@ jobs:
           channel_id: "C04CRUE6MU3"
           message: "message"
           blocks: |
-            - type: "section"
-              text:
-                type: "mrkdwn"
-                text: ```${{ steps.vars.outputs.DIFF_CONTENT }}```
+            [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "```${{ steps.vars.outputs.DIFF_CONTENT }}```"
+                }
+              }
+            ]
