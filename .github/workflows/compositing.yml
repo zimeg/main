@@ -45,7 +45,7 @@ jobs:
                   - type: "rich_text_preformatted"
                     elements:
                       - type: "text"
-                        text: "${{ steps.vars.outputs.DIFF_CONTENT }}"
+                        text: ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}
 
       - name: Notification
         uses: ./.github/actions
@@ -59,4 +59,4 @@ jobs:
                 - type: "rich_text_preformatted"
                   elements:
                     - type: "text"
-                      text: ${{ steps.vars.outputs.DIFF_CONTENT }}
+                      text: ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}
