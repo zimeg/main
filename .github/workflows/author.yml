@@ -13,6 +13,16 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Find correspondences
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          api: https://dev.slack.com/api/
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN_DEV }}
+          payload: |
+            channel: "C016KBQHA8K"
+            text: "greting."
+
       #
       # TECHNIQUE 1
       #
