@@ -17,7 +17,7 @@ jobs:
       # TECHNIQUE 1
       #
       - name: Start the Slack workflow
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           payload-delimiter: "_"
           webhook: ${{ env.SLACK_WEBHOOK_TRIGGER_URL }}
@@ -30,7 +30,7 @@ jobs:
       #
       - name: Find correspondences
         id: email
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           method: users.lookupByEmail # https://api.slack.com/methods/users.lookupByEmail
           token: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -45,7 +45,7 @@ jobs:
 
       - name: Send a direct message
         if: ${{ steps.email.outputs.ok }}
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           errors: true
           method: chat.postMessage # https://api.slack.com/methods/chat.postMessage
@@ -74,7 +74,7 @@ jobs:
       # TECHNIQUE 3
       #
       - name: Greet the reader
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
           webhook-type: incoming-webhook
@@ -84,7 +84,7 @@ jobs:
           SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
 
       - name: Forward a saved message
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           payload-file-path: "./.github/workflows/saved.data.json"
           payload-templated: true
@@ -95,7 +95,7 @@ jobs:
           SLACK_CHANNEL_ID: C04CRUE6MU3
 
       - name: Write the review
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
         with:
           webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
           webhook-type: incoming-webhook
