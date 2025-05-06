@@ -35,7 +35,7 @@ jobs:
           method: users.lookupByEmail # https://api.slack.com/methods/users.lookupByEmail
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            email: ${{ github.event.pusher.email }}
+            email ${{ github.event.pusher.email }}
 
       - name: Search email detail
         if: ${{ steps.email.outputs.ok }}
@@ -54,7 +54,6 @@ jobs:
             "channel": "${{ env.SLACK_USER_ID }}",
             "text": "${{ github.repository }} had a change!",
             "blocks": [
-              {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
