@@ -13,7 +13,5 @@ jobs:
           method: chat.postMessage
           errors: "true"
           payload: |
-            {
-              "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
-              "text": ${{ toJSON(github.event.pull_request.title) }}
-            }
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: ${{ toJSON(github.event.pull_request.title) }}
