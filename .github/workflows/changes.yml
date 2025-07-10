@@ -15,3 +15,11 @@ jobs:
           payload: |
             channel: ${{ secrets.SLACK_CHANNEL_ID }}
             text: "Pull Request is ready to merge"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |
+                    :rocket: *Pull Request Ready to Merge*
+                    
+                    *https://github.com/${{ github.repository }}*
