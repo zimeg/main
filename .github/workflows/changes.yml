@@ -8,10 +8,12 @@ jobs:
     steps:
       - name: Notify Slack (if all checks passed)
         uses: slackapi/slack-github-action@v2.1.1
+        env:
+          MESSAGE: "attempts: ${{ github.event.pull_request.title }}"
         with:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           method: chat.postMessage
           errors: "true"
           payload: |
             channel: "${{ secrets.SLACK_CHANNEL_ID }}"
-            text: "attempts: ${{ toJSON(github.event.pull_request.title) }}"
+            text: toJSON(env.MESSAGE)
