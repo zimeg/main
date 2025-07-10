@@ -15,5 +15,5 @@ jobs:
           payload: |
             {
               "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
-              "text": ${{ toJSON(github.event.head_commit.message) }}
+              "text": ${{ toJSON(github.event.pull_request.title) }}
             }
