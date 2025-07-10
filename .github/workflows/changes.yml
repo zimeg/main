@@ -16,4 +16,4 @@ jobs:
           errors: "true"
           payload: |
             channel: "${{ secrets.SLACK_CHANNEL_ID }}"
-            text: ${{ toJSON(env.MESSAGE) }}
+            text: ${{ toJSON("nicee ${{ env.MESSAGE}}") }}
