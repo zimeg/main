@@ -5,7 +5,6 @@ jobs:
   run:
     name: Respond to reports of a new problem
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'bug' }}
     steps:
       - name: Notify Slack (if all checks passed)
         uses: slackapi/slack-github-action@v2.1.0
