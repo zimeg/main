@@ -28,5 +28,5 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: monitoring
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
             text: toJSON(env.MESSAGE)
