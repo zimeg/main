@@ -14,4 +14,4 @@ jobs:
           errors: "true"
           payload: |
             channel: "${{ secrets.SLACK_CHANNEL_ID }}"
-            text: ${{ toJSON(github.event.pull_request.title) }}
+            text: "attempts: ${{ toJSON(github.event.pull_request.title) }}"
