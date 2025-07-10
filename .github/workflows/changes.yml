@@ -24,6 +24,7 @@ jobs:
         env:
           MESSAGE: "FRONTEND: Deployment of '${{ github.event.workflow_run.head_commit.message || github.event.head_commit.message || github.event.pull_request.title }}' to ${{ github.ref_name }} Completed"
         with:
+          errors: true
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
