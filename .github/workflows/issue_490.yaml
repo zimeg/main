@@ -1,0 +1,39 @@
+# https://github.com/slackapi/slack-github-action/issues/490
+name: "Issue #490"
+on:
+  pull_request:
+jobs:
+  run:
+    name: "Linebreaks in preformatted markdown variable"
+    runs-on: ubuntu-latest
+    env:
+      MESSAGE: "anf-rp             2537.0.0-main.3  installed  deployed\nazure-monitor      installed        install\nazure-redis        6.0              installed\nazure-service-bus  1.0              installed\ncbs                2537.0.0-main.2  installed  deployed\ncvo                9.17.1           installed\ncvs-sde            2537.0.0-main.7  installed  deployed\nmanaged-identity   installed        install\nmoonstone          v0.2.56          installed  deployed\nnfsaas-azurite     v1.4.0           installed  deployed\nnrp-simulator      v0.19.0          installed  deployed\nrabbitmq           v1.19.0          installed  deployed\ntimescaledb        0.0.8            installed  deployed%"
+    steps:
+      - name: Send as a message (2.1.0)
+        uses: slackapi/slack-github-action@v2.1.0
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: ${{ env.MESSAGE }}
+            blocks:
+              - type: "rich_text_preformatted"
+                elements:
+                  - type: "text"
+                    text: "${{ env.MESSAGE }}"
+      - name: Send as a message (2.1.1)
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: ${{ env.MESSAGE }}
+            blocks:
+              - type: "rich_text_preformatted"
+                elements:
+                  - type: "text"
+                    text: "${{ env.MESSAGE }}"
