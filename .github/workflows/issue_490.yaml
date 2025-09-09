@@ -93,7 +93,7 @@ jobs:
                 }
               ]
             }
-      - name: Send as a message (yaml)
+      - name: Send as a message (tojson)
         uses: slackapi/slack-github-action@v2.1.1
         with:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -109,4 +109,21 @@ jobs:
                     elements:
                       - type: text
                         text: ${{ toJSON(env.MESSAGE) }}
+                    border: 0
+      - name: Send as a message (yaml)
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "${{ env.MESSAGE }}"
+            blocks:
+              - type: rich_text
+                elements:
+                  - type: rich_text_preformatted
+                    elements:
+                      - type: text
+                        text: "${{ env.MESSAGE }}"
                     border: 0
