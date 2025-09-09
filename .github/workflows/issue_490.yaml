@@ -28,7 +28,7 @@ jobs:
                       "elements": [
                         {
                           "type": "text",
-                          "text": "{\n  \"object\": {\n    \"description\": \"this is an example of a json object\"\n  }\n}"
+                          "text": "${{ env.MESSAGE }}"
                         },
                       ],
                       "border": 0
