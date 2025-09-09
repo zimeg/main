@@ -56,7 +56,7 @@ jobs:
                       "elements": [
                         {
                           "type": "text",
-                          "text": "${{ env.MESSAGE }}"
+                          "text": ${{ toJSON(env.MESSAGE) }}
                         },
                       ],
                       "border": 0
