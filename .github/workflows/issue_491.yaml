@@ -1,0 +1,27 @@
+# https://github.com/slackapi/slack-github-action/issues/491
+name: "Issue #491"
+on:
+  pull_request:
+jobs:
+  run:
+    name: "Tokenized images are truncated"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Source image is found"
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "https://github.com/user-attachments/assets/668c92cf-7cb1-4d37-bbae-970a2eeb50b3"
+      - name: "Preview link is found"
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "https://private-user-images.githubusercontent.com/18134219/487936369-668c92cf-7cb1-4d37-bbae-970a2eeb50b3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTc1MjY0NDEsIm5iZiI6MTc1NzUyNjE0MSwicGF0aCI6Ii8xODEzNDIxOS80ODc5MzYzNjktNjY4YzkyY2YtN2NiMS00ZDM3LWJiYWUtOTcwYTJlZWI1MGIzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA5MTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwOTEwVDE3NDIyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIyYjM0YTk4MzY2NzE3ZGVhM2Q0NDdmN2U4NzcwZTMyZWNiMmE0MTBlYjZlNzk4MzJhZjE3OTA2YzYxZWU5ZTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.w45x6EWkgecIUfCquBqZk9RRqjO0zCtCdKsSo9Ve4og"
