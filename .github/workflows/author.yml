@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Direct message the author
+on:
+  push:
+jobs:
+  run:
+    name: Send a notification of recent changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Find correspondences
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          api: https://dev.slack.com/api/
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN_DEV }}
+          payload: |
+            channel: "C016KBQHA8K"
+            text: "greting."
+
+      #
+      # TECHNIQUE 1
+      #
+      - name: Start the Slack workflow
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          payload-delimiter: "_"
+          webhook: ${{ env.SLACK_WEBHOOK_TRIGGER_URL }}
+          webhook-type: webhook-trigger
+        env:
+          SLACK_WEBHOOK_TRIGGER_URL: https://hooks.slack.com/triggers/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
+
+      #
+      # TECHNIQUE 2
+      #
+      - name: Find correspondences
+        id: email
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          method: users.lookupByEmail # https://api.slack.com/methods/users.lookupByEmail
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            email ${{ github.event.pusher.email }}
+
+      - name: Search email detail
+        if: ${{ steps.email.outputs.ok }}
+        run: |
+          SLACK_USER_ID=$(echo '${{ steps.email.outputs.response }}' | jq -r '.user.id')
+          echo "SLACK_USER_ID=$SLACK_USER_ID" >> $GITHUB_ENV
+
+      - name: Send a direct message
+        if: ${{ steps.email.outputs.ok }}
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          errors: true
+          method: chat.postMessage # https://api.slack.com/methods/chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            "channel": "${{ env.SLACK_USER_ID }}",
+            "text": "${{ github.repository }} had a change!",
+            "blocks": [
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": ":large_green_square: <https://github.com/${{ github.repository }}|*${{ github.repository }}*>: `${{ github.sha }}`"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": ${{ toJSON(github.event.head_commit.message) }}
+                }
+              }
+            ]
+
+      #
+      # TECHNIQUE 3
+      #
+      - name: Greet the reader
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            text: "Greetings!"
+        env:
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
+
+      - name: Forward a saved message
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          payload-file-path: "./.github/workflows/saved.data.json"
+          payload-templated: true
+          webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+        env:
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_CHANNEL_ID: C04CRUE6MU3
+
+      - name: Write the review
+        uses: zimeg/slack-github-action@v2.0.1-rc.6
+        with:
+          webhook: ${{ env.SLACK_INCOMING_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            text: "Danny Torrence left a 1 star review for your property."
+            blocks:
+              - type: "section"
+                text:
+                  type: "mrkdwn"
+                  text: "Danny Torrence left the following review for your property:"
+              - type: "section"
+                text:
+                  type: "mrkdwn"
+                  text: "<https://example.com|*Overlook Hotel*> :star: \n Doors had too many axe holes, guest in room 237 was far too rowdy, whole place felt stuck in the 1920s."
+                accessory:
+                  type: "image"
+                  image_url: "https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/d3/72/5c/d3725c8f-c642-5d69-1904-aa36e4297885/source/256x256bb.jpg"
+                  alt_text: "Haunted hotel image"
+              - type: "section"
+                fields:
+                  - type: "mrkdwn"
+                    text: "*Average Rating*: 1.0"
+        env:
+          SLACK_INCOMING_WEBHOOK_URL: https://hooks.slack.com/services/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
