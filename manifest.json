@@ -1,0 +1,25 @@
+{
+  "_metadata": {
+    "major_version": 2
+  },
+  "display_information": {
+    "name": "Main"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Main",
+      "always_online": true
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "channels:manage",
+        "chat:write",
+        "usergroups:read",
+        "users:read",
+        "users:read.email"
+      ]
+    }
+  }
+}

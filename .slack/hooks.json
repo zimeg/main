@@ -1,0 +1,7 @@
+{
+  "runtime": "actions",
+  "hooks": {
+    "get-manifest": "cat manifest.json #",
+    "deploy": "echo https://api.slack.com/apps"
+  }
+}
