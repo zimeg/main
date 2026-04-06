@@ -1,0 +1,52 @@
+name: Update dependencies
+
+on: push
+
+jobs:
+  dependabot:
+    name: Merge automatic pull requests
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Print a hello
+        run: echo "hello"
+
+      - name: Print a variable
+        run: echo $DEPENDENCIES
+        env:
+          DEPENDENCIES: "@slack/bolt"
+
+      - name: Print a list
+        run: echo $DEPENDENCIES
+        env:
+          DEPENDENCIES: |
+            - "@slack/bolt"
+
+      - name: Print a string of two
+        run: echo $DEPENDENCIES
+        env:
+          DEPENDENCIES: |
+            - "@slack/bolt"
+            - "@slack/cli-hooks"
+
+      - name: Print a template of two
+        run: echo "${{ env.DEPENDENCIES }}"
+        env:
+          DEPENDENCIES: |
+            - "@slack/bolt"
+            - "@slack/cli-hooks"
+
+      - name: Attempt a contains
+        if: |
+          (
+            true == true ||
+            true == false
+          ) && (
+            6 < 4 ||
+            8 < 4
+          )
+        run: echo "nice"
+        env:
+          DEPENDENCIES: |
+            - "@slack/bolt"
+            - "@slack/cli-hooks"

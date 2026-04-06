@@ -1,0 +1,42 @@
+name: Interpolate
+on:
+  push:
+jobs:
+  releaser:
+    name: Mimic an exit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get failed job/step logs
+        id: fail_msg
+        run: |
+          error_log=$(cat <<EOF
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.2984264Z ##[group]Run npm run test:gen-cov
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.2984869Z [36;1mnpm run test:gen-cov[0m
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.3042401Z shell: /usr/bin/bash -e {0}
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.3042816Z ##[endgroup]
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4330529Z npm error Missing script: "test:gen-cov"
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4331117Z npm error
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4331714Z npm error To see a list of scripts, run:
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4332209Z npm error   npm run
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4343477Z 
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4344894Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2024-11-14T20_38_59_378Z-debug-0.log
+          Run tests	unit(test): check unit test coverage	2024-11-14T20:38:59.4400807Z ##[error]Process completed with exit code 1.
+          EOF
+          )
+          {
+            echo 'get_log<<EOF'
+            echo "workflow failed with the following error:"
+            echo "$error_log"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "$SLACK_MESSAGE_TEXT"
+        env:
+          SLACK_MESSAGE_TEXT: ${{ steps.fail_msg.outputs.get_log }}
