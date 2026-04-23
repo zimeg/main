@@ -23,7 +23,6 @@ jobs:
           command: version
 
       - name: Notify Slack
-        if: steps.changesets.outputs.published == 'true'
         uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
         with:
           webhook: ${{ secrets.SLACK_RELEASE_ANNOUNCEMENTS_WEBHOOK_URL }}
