@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send a message to a Slack channel
-        uses: zimeg/slack-github-action@v3
+        uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
         with:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -18,6 +18,6 @@ jobs:
             text: "A push was made to ${{ github.repository }} by ${{ github.actor }}"
 
       - name: Check the Slack CLI version
-        uses: zimeg/slack-github-action/cli@v3
+        uses: slackapi/slack-github-action/cli@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
         with:
           command: version
