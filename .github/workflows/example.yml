@@ -21,3 +21,14 @@ jobs:
         uses: slackapi/slack-github-action/cli@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
         with:
           command: version
+
+      - name: Notify Slack
+        if: steps.changesets.outputs.published == 'true'
+        uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
+        with:
+          webhook: ${{ secrets.SLACK_RELEASE_ANNOUNCEMENTS_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            action_url: "${{ steps.release.outputs.url }}"
+            message: "${{ steps.release.outputs.message }}"
+            repository: "${{ github.repository }}"
