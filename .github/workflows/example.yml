@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Send a message and check CLI version
+on:
+  push:
+jobs:
+  run:
+    name: Send a message and check CLI version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a message to a Slack channel
+        uses: zimeg/slack-github-action@v3.0.7
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "A push was made to ${{ github.repository }} by ${{ github.actor }}"
+
+      - name: Check the Slack CLI version
+        uses: zimeg/slack-github-action/cli@v3.0.7
+        with:
+          command: version
