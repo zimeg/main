@@ -1,33 +1,23 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 
-name: Send a message and check CLI version
+name: Share a file to a Slack channel
 on:
   push:
 jobs:
   run:
-    name: Send a message and check CLI version
+    name: Share a file to a Slack channel
     runs-on: ubuntu-latest
     steps:
-      - name: Send a message to a Slack channel
-        uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Share a file to that channel
+        uses: slackapi/slack-github-action@v3.0.3
         with:
-          method: chat.postMessage
+          method: files.uploadV2
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            channel: ${{ secrets.SLACK_CHANNEL_ID }}
-            text: "A push was made to ${{ github.repository }} by ${{ github.actor }}"
-
-      - name: Check the Slack CLI version
-        uses: slackapi/slack-github-action/cli@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
-        with:
-          command: version
-
-      - name: Notify Slack
-        uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
-        with:
-          webhook: ${{ secrets.SLACK_RELEASE_ANNOUNCEMENTS_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
-          payload: |
-            action_url: "${{ steps.release.outputs.url }}"
-            message: "${{ steps.release.outputs.message }}"
-            repository: "${{ github.repository }}"
+            channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+            initial_comment: "the results are in!"
+            file: "./README.md"
+            filename: "README-${{ github.sha }}.md"
