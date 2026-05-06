@@ -8,8 +8,18 @@ jobs:
     name: Share a file to a Slack channel
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Generate a changelog
+        run: |
+          cat <<EOF > CHANGELOG.md
+          ## v2.4.0 - 2026-05-05
+
+          ### Added
+          - Support for file uploads in notifications
+          - Improved error handling for webhook deliveries
+
+          ### Fixed
+          - Resolved timeout issues with large payloads
+          EOF
 
       - name: Share a file to that channel
         uses: slackapi/slack-github-action@v3.0.3
@@ -20,5 +30,5 @@ jobs:
           payload: |
             channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
             initial_comment: "the results are in!"
-            file: "./README.md"
-            filename: "README-${{ github.sha }}.md"
+            file: "./CHANGELOG.md"
+            filename: "CHANGELOG-${{ github.sha }}.md"
