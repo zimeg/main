@@ -1,0 +1,62 @@
+name: send-slack
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  send-slack:
+    name: send-slack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout actions
+        uses: actions/checkout@v4
+
+      - name: Create JSON file
+        run: |
+          echo '{ "added": [], "removed": [] }' > diff.json
+
+      - name: Set output
+        id: vars
+        run: |
+          {
+            echo 'DIFF_CONTENT<<EOF'
+            jq '.' diff.json
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+
+      - name: echo (debug)
+        run: |
+          echo "${{ steps.vars.outputs.DIFF_CONTENT }}"
+
+      - name: Notification
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          errors: true
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: "C04CRUE6MU3"
+            text: "message"
+            blocks:
+              - type: "rich_text"
+                elements:
+                  - type: "rich_text_preformatted"
+                    elements:
+                      - type: "text"
+                        text: ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}
+
+      - name: Notification
+        uses: ./.github/actions
+        with:
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          channel_id: "C04CRUE6MU3"
+          message: "message"
+          blocks: |
+            - type: "rich_text"
+              elements:
+                - type: "rich_text_preformatted"
+                  elements:
+                    - type: "text"
+                      text: ${{ toJSON(steps.vars.outputs.DIFF_CONTENT) }}

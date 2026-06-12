@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Send webhook triggers
+on:
+  push:
+jobs:
+  run:
+    name: Send webhook triggers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a webhook trigger with inline secret
+        uses: slackapi/slack-github-action@v3.0.3
+        with:
+          errors: true
+          webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
+          payload: |
+            number: "1"
+
+      - name: Send a webhook trigger with webhook env
+        uses: slackapi/slack-github-action@v3.0.3
+        with:
+          errors: true
+          webhook-type: webhook-trigger
+          webhook: ${{ env.SLACK_WEBHOOK_URL }}
+          payload: |
+            number: "2"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
+
+      - name: Send a webhook trigger without webhook
+        uses: slackapi/slack-github-action@v3.0.3
+        with:
+          errors: true
+          webhook-type: webhook-trigger
+          payload: |
+            number: "3"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}

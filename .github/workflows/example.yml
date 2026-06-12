@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Share a file to a Slack channel
+on:
+  push:
+jobs:
+  run:
+    name: Share a file to a Slack channel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Share a file to that channel
+        uses: slackapi/slack-github-action@v3.0.3
+        with:
+          method: files.uploadV2
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          errors: true
+          payload: |
+            channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+            initial_comment: "the results are in!"
+            file: "./README.md"
+            filename: "README-${{ github.sha }}.md"

@@ -1,0 +1,49 @@
+# https://github.com/slackapi/slack-github-action/issues/491
+name: "Issue #491"
+on:
+  pull_request:
+jobs:
+  run:
+    name: "Tokenized images are truncated"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Source image is found"
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "hello! attachment"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |-
+                    hello attachment!
+                accessory:
+                  type: image
+                  image_url: >-
+                    https://github.com/user-attachments/assets/668c92cf-7cb1-4d37-bbae-970a2eeb50b3
+                  alt_text: Logo
+      - name: "Token image is included"
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: "hello! token"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |-
+                    hello token!
+                accessory:
+                  type: image
+                  image_url: >-
+                    https://private-user-images.githubusercontent.com/18134219/487936369-668c92cf-7cb1-4d37-bbae-970a2eeb50b3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTc1Mjk0MTksIm5iZiI6MTc1NzUyOTExOSwicGF0aCI6Ii8xODEzNDIxOS80ODc5MzYzNjktNjY4YzkyY2YtN2NiMS00ZDM3LWJiYWUtOTcwYTJlZWI1MGIzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA5MTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwOTEwVDE4MzE1OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFjMWM1ZDczZmM5NmI5Zjc3ZmE3OTkxNzhiODc5ODYyOWUzZjQ1MjcwZmE2MDgwMjU1ZTFiMTZlYjA3N2Y0YTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Tquyufcm8n98Q5oOUlXwYECOmOuneOPISuy5dd6Xg40
+                  alt_text: Logo

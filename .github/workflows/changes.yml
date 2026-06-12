@@ -1,0 +1,32 @@
+name: Test
+on:
+  pull_request:
+jobs:
+  run:
+    name: Respond to reports of a new problem
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack (if all checks passed)
+        uses: slackapi/slack-github-action@v2.1.1
+        env:
+          MESSAGE: "attempts: ${{ github.event.pull_request.title }}"
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          errors: "true"
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: ${{ toJSON(env.MESSAGE) }}
+
+      - name: Deploy Complete Success Notification
+        uses: slackapi/slack-github-action@v2.1.1
+        if: success()
+        env:
+          MESSAGE: "FRONTEND: Deployment of '${{ github.event.workflow_run.head_commit.message || github.event.head_commit.message || github.event.pull_request.title }}' to ${{ github.ref_name }} Completed"
+        with:
+          errors: true
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: "${{ secrets.SLACK_CHANNEL_ID }}"
+            text: ${{ toJSON(env.MESSAGE) }}

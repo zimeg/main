@@ -1,0 +1,31 @@
+name: "Slack Notification"
+description: "Send Slack notifications for GitHub Actions workflows"
+
+inputs:
+  slack_bot_token:
+    description: "Slack bot token"
+    required: true
+  channel_id:
+    description: "Slack channel id"
+    required: false
+    default: "channel"
+  message:
+    description: "Message to send to Slack"
+    required: true
+  blocks:
+    description: "Optional Slack blocks for advanced message formatting"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Send Slack notification
+      uses: slackapi/slack-github-action@v2.0
+      with:
+        errors: true
+        method: chat.postMessage
+        token: ${{ inputs.slack_bot_token }}
+        payload: |
+          channel: "${{ inputs.channel_id }}"
+          text: "${{ inputs.message }}"
+          blocks:
+          ${{ inputs.blocks }}
