@@ -12,8 +12,8 @@ jobs:
         uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
           webhook-type: webhook-trigger
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
           payload: |
             number: "1"
 
@@ -21,8 +21,8 @@ jobs:
         uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
-          webhook: ${{ env.SLACK_WEBHOOK_URL }}
           webhook-type: webhook-trigger
+          webhook: ${{ env.SLACK_WEBHOOK_URL }}
           payload: |
             number: "2"
         env:
@@ -32,6 +32,7 @@ jobs:
         uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
+          webhook-type: webhook-trigger
           payload: |
             number: "3"
         env:
