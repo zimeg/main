@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send a webhook trigger with inline secret
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
           webhook: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
@@ -18,7 +18,7 @@ jobs:
             number: "1"
 
       - name: Send a webhook trigger with webhook env
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
           webhook: ${{ env.SLACK_WEBHOOK_URL }}
@@ -29,7 +29,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
 
       - name: Send a webhook trigger without webhook
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v3.0.3
         with:
           errors: true
           payload: |
